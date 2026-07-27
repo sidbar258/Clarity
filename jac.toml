@@ -1,0 +1,52 @@
+[project]
+name = "jachacks-fintech"
+version = "0.1.0"
+description = "Compare the true cost of an international money transfer -- advertised fee plus the hidden exchange-rate margin"
+entry-point = "main.jac"
+kind = "web-app"
+
+[dependencies]
+"byllm" = ">=0.0.0"
+
+[dependencies.npm]
+react = "^18.2.0"
+react-dom = "^18.2.0"
+react-router-dom = "^6.22.0"
+react-error-boundary = "^5.0.0"
+"@tanstack/react-form" = "^1.33.0"
+zod = "^4.3.6"
+
+[dependencies.npm.dev]
+vite = "^6.4.1"
+"@vitejs/plugin-react" = "4.7.0"
+typescript = "^5.3.3"
+"@types/react" = "^18.2.0"
+"@types/react-dom" = "^18.2.0"
+
+[dev-dependencies]
+watchdog = ">=3.0.0"
+
+[serve]
+base_route_app = "app"
+
+[client]
+
+[client.app_meta_data]
+title = "True Cost of Sending Money Home"
+description = "Compare remittance providers by total cost: the fee they advertise plus the exchange-rate margin they don't."
+keywords = "remittance fees exchange rate comparison fintech jac"
+
+# Powers the AI advisor in `advisor.sv.jac`. Requires ANTHROPIC_API_KEY.
+# Alternatives: "gpt-4o-mini" (OPENAI_API_KEY), "ollama/llama3" (local daemon),
+# or "local:gemma-4-e4b" after `jac install 'byllm[local]' && jac model pull gemma-4-e4b`.
+# With no model reachable the advisor falls back to deterministic summaries, so
+# the app still works end to end.
+[byllm.model]
+default_model = "anthropic/claude-opus-5"
+
+[byllm.call_params]
+temperature = 0.2
+max_tokens = 900
+
+[test]
+directory = "."

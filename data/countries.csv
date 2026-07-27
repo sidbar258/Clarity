@@ -1,0 +1,15 @@
+code,name,currency,flag,role,region,difficulty
+US,United States,USD,🇺🇸,send,North America,1.0
+GB,United Kingdom,GBP,🇬🇧,send,Europe,1.0
+CA,Canada,CAD,🇨🇦,send,North America,1.0
+AU,Australia,AUD,🇦🇺,send,Oceania,1.0
+AE,United Arab Emirates,AED,🇦🇪,send,Middle East,1.0
+MX,Mexico,MXN,🇲🇽,receive,Latin America,1.0
+PH,Philippines,PHP,🇵🇭,receive,Southeast Asia,1.0
+IN,India,INR,🇮🇳,receive,South Asia,1.0
+CO,Colombia,COP,🇨🇴,receive,Latin America,1.15
+VN,Vietnam,VND,🇻🇳,receive,Southeast Asia,1.2
+PK,Pakistan,PKR,🇵🇰,receive,South Asia,1.1
+GT,Guatemala,GTQ,🇬🇹,receive,Latin America,1.3
+EG,Egypt,EGP,🇪🇬,receive,Middle East & North Africa,1.5
+NG,Nigeria,NGN,🇳🇬,receive,Sub-Saharan Africa,1.6

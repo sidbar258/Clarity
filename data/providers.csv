@@ -1,0 +1,9 @@
+slug,name,blurb,network
+wise,Wise,Converts at the mid-market rate and charges the fee up front,Digital
+remitly,Remitly,App-based transfers with an economy tier and a faster express tier,Digital + cash network
+worldremit,WorldRemit,Digital-first with strong mobile-wallet payout,Digital + mobile wallet
+xoom,Xoom,PayPal's remittance arm; funded from a bank account or card,Digital
+ria,Ria Money Transfer,Retail agent network built around cash pickup,Agent network
+moneygram,MoneyGram,Cash pickup and bank deposit through retail agents,Agent network
+westernunion,Western Union,The largest agent network; often advertises a zero transfer fee,Agent network
+bank_wire,High-street bank wire,A branch or online international wire sent over SWIFT,SWIFT
