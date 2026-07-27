@@ -3,57 +3,91 @@
  * Two data colors only, and they carry the whole argument of the product:
  *   --series-fee    the fee a provider advertises
  *   --series-spread the exchange-rate margin it does not
- * Both validated for contrast and colour-vision separation against each
- * surface, so the fee/spread split stays readable for every reader.
+ * Both are validated for contrast and colour-vision separation against every
+ * surface they sit on (worst adjacent pair ΔE 24.7 protan / 33.6 normal in
+ * light, 26.8 / 31.8 in dark). They are the one thing in this file that must
+ * not be changed for looks — everything else is decoration around them.
+ *
+ * Decoration therefore stays off the data: gradients, shadows and motion are
+ * applied to page furniture, never to a mark whose colour means something.
  */
 
 :root {
   color-scheme: light;
 
-  --surface-1: #fcfcfb;
-  --surface-page: #f9f9f7;
-  --surface-sunken: #f2f1ed;
+  /* surfaces */
+  --surface-1: #ffffff;
+  --surface-page: #f4f3f0;
+  --surface-page-2: #eceef4;
+  --surface-sunken: #f1f0ec;
+  --surface-raised: #fbfbfa;
 
+  /* ink */
   --text-primary: #0b0b0b;
   --text-secondary: #52514e;
-  --text-muted: #898781;
+  --text-muted: #8a8881;
 
-  --gridline: #e1e0d9;
-  --border: rgba(11, 11, 11, 0.1);
-  --border-strong: rgba(11, 11, 11, 0.18);
+  /* structure */
+  --gridline: #e5e4dd;
+  --border: rgba(11, 11, 11, 0.09);
+  --border-strong: rgba(11, 11, 11, 0.16);
 
+  /* data — validated, do not restyle */
   --series-fee: #2a78d6;
   --series-spread: #eb6834;
 
+  /* status */
   --status-good: #0ca30c;
   --status-critical: #d03b3b;
   --success-text: #006300;
+  --success-tint: rgba(12, 163, 12, 0.09);
+  --critical-tint: rgba(208, 59, 59, 0.08);
+  --accent-tint: rgba(42, 120, 214, 0.08);
 
-  --radius: 10px;
-  --radius-sm: 6px;
+  /* elevation */
+  --shadow-sm: 0 1px 2px rgba(11, 11, 11, 0.05), 0 1px 1px rgba(11, 11, 11, 0.03);
+  --shadow-md: 0 2px 4px rgba(11, 11, 11, 0.05), 0 8px 20px -6px rgba(11, 11, 11, 0.10);
+  --shadow-lg: 0 4px 8px rgba(11, 11, 11, 0.06), 0 18px 40px -12px rgba(11, 11, 11, 0.16);
+  --shadow-btn: 0 1px 2px rgba(42, 120, 214, 0.30), 0 6px 16px -4px rgba(42, 120, 214, 0.38);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-xs: 6px;
   --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.22, 0.68, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
-    --surface-1: #1a1a19;
-    --surface-page: #0d0d0d;
-    --surface-sunken: #232322;
+    --surface-1: #17181b;
+    --surface-page: #0a0a0c;
+    --surface-page-2: #101319;
+    --surface-sunken: #202226;
+    --surface-raised: #1d1f23;
 
-    --text-primary: #ffffff;
-    --text-secondary: #c3c2b7;
-    --text-muted: #898781;
+    --text-primary: #f7f7f5;
+    --text-secondary: #c1c0b8;
+    --text-muted: #8a8881;
 
-    --gridline: #2c2c2a;
-    --border: rgba(255, 255, 255, 0.1);
-    --border-strong: rgba(255, 255, 255, 0.18);
+    --gridline: #2b2d31;
+    --border: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(255, 255, 255, 0.17);
 
     --series-fee: #3987e5;
     --series-spread: #d95926;
 
-    --success-text: #0ca30c;
+    --success-text: #35c135;
+    --status-critical: #ef6b6b;
+    --success-tint: rgba(53, 193, 53, 0.12);
+    --critical-tint: rgba(239, 107, 107, 0.11);
+    --accent-tint: rgba(57, 135, 229, 0.13);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px 26px -8px rgba(0, 0, 0, 0.7);
+    --shadow-lg: 0 6px 14px rgba(0, 0, 0, 0.55), 0 22px 48px -14px rgba(0, 0, 0, 0.8);
+    --shadow-btn: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 20px -6px rgba(57, 135, 229, 0.5);
   }
 }
 
@@ -64,76 +98,106 @@
 body {
   margin: 0;
   font-family: var(--font);
-  background: var(--surface-page);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /* Two very wide, very soft washes. Deliberately low contrast so nothing
+   * competes with the fee/spread bars for attention. */
+  background:
+    radial-gradient(1200px 620px at 12% -8%, var(--surface-page-2) 0%, transparent 62%),
+    radial-gradient(1000px 560px at 92% 4%, var(--accent-tint) 0%, transparent 58%),
+    var(--surface-page);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 /* ---------------------------------------------------------------- layout */
 
 .shell {
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
+  padding: 3rem 1.25rem 5rem;
 }
 
 .masthead {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  animation: rise 0.5s var(--ease) both;
 }
 
 .masthead h1 {
-  margin: 0 0 0.35rem;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.9rem, 1.1rem + 2.6vw, 2.85rem);
+  line-height: 1.08;
+  letter-spacing: -0.033em;
+  font-weight: 780;
+  max-width: 19ch;
+  background: linear-gradient(168deg, var(--text-primary) 30%, var(--series-fee) 190%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .masthead p {
   margin: 0;
   color: var(--text-secondary);
-  max-width: 60ch;
+  max-width: 62ch;
+  font-size: 1.0625rem;
 }
 
 .card {
+  position: relative;
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  margin-bottom: 1.35rem;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+  animation: rise 0.5s var(--ease) both;
+  animation-delay: 0.05s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
 }
 
 .card h2 {
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
+  margin: 0 0 1.15rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
 }
 
 .section-note {
-  margin: 0 0 1rem;
+  margin: 0 0 1.15rem;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  max-width: 74ch;
 }
 
 /* ------------------------------------------------------------------ form */
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 0.9rem;
   align-items: end;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
   min-width: 0;
 }
 
 .field label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-muted);
 }
@@ -142,12 +206,29 @@ body {
 .field select {
   font: inherit;
   font-size: 0.9375rem;
-  padding: 0.55rem 0.65rem;
+  font-weight: 500;
+  padding: 0.65rem 0.75rem;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--surface-1);
+  background: var(--surface-raised);
   color: var(--text-primary);
   min-width: 0;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease),
+    background 0.18s var(--ease);
+}
+
+.field input:hover,
+.field select:hover {
+  border-color: var(--text-muted);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  background: var(--surface-1);
+  border-color: var(--series-fee);
+  box-shadow: 0 0 0 3.5px var(--accent-tint);
 }
 
 .field input:focus-visible,
@@ -156,71 +237,127 @@ body {
   outline-offset: 1px;
 }
 
+/* Native chevron replaced so the control matches the inputs beside it. */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 17px) calc(50% + 1px), calc(100% - 12px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+}
+
 .btn {
   font: inherit;
-  font-weight: 600;
+  font-weight: 650;
   font-size: 0.9375rem;
-  padding: 0.6rem 1.15rem;
+  letter-spacing: 0.005em;
+  padding: 0.7rem 1.4rem;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   background: var(--series-fee);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--series-fee) 88%, white),
+    var(--series-fee));
   color: #ffffff;
   cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.16s var(--ease), box-shadow 0.16s var(--ease),
+    filter 0.16s var(--ease);
 }
 
 .btn:hover:not(:disabled) {
-  filter: brightness(1.07);
+  transform: translateY(-1.5px);
+  filter: brightness(1.06);
+  box-shadow: 0 2px 4px rgba(42, 120, 214, 0.32), 0 12px 26px -6px rgba(42, 120, 214, 0.5);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.97);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--surface-raised);
   color: var(--text-primary);
   border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ------------------------------------------------------------ stat tiles */
 
 .stat-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1px;
   background: var(--gridline);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
+  box-shadow: var(--shadow-md);
+  animation: rise 0.5s var(--ease) both;
+  animation-delay: 0.1s;
 }
 
 .stat {
+  position: relative;
   background: var(--surface-1);
-  padding: 1rem 1.1rem;
+  padding: 1.15rem 1.25rem 1.25rem;
+  transition: background 0.22s var(--ease);
+}
+
+/* A hairline that fills in on hover — signals the tile without recolouring it. */
+.stat::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--series-fee), var(--series-spread));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s var(--ease);
+}
+
+.stat:hover {
+  background: var(--surface-raised);
+}
+
+.stat:hover::before {
+  transform: scaleX(1);
 }
 
 .stat-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 
 .stat-value {
-  font-size: 1.5rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-size: 1.75rem;
+  font-weight: 720;
+  letter-spacing: -0.032em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-caption {
   font-size: 0.8125rem;
   color: var(--text-secondary);
-  margin-top: 0.2rem;
+  margin-top: 0.35rem;
 }
 
 .stat-value.is-good {
@@ -232,8 +369,8 @@ body {
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.15rem;
+  margin-bottom: 1.15rem;
   font-size: 0.8125rem;
   color: var(--text-secondary);
 }
@@ -241,7 +378,7 @@ body {
 .legend-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .legend-key {
@@ -249,6 +386,7 @@ body {
   height: 12px;
   border-radius: 3px;
   flex: none;
+  box-shadow: var(--shadow-sm);
 }
 
 .legend-key.is-fee {
@@ -263,22 +401,25 @@ body {
 .costbar {
   display: flex;
   gap: 2px;
-  height: 12px;
+  height: 13px;
   width: 100%;
   background: var(--surface-sunken);
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: visible;
+  box-shadow: inset 0 0 0 1px var(--border);
 }
 
 .costbar-seg {
   height: 100%;
   min-width: 2px;
   border-radius: 0;
+  transform-origin: left center;
+  animation: grow 0.6s var(--ease) both;
 }
 
 .costbar-seg:first-child {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .costbar-seg:last-child {
@@ -286,12 +427,21 @@ body {
   border-bottom-right-radius: 4px;
 }
 
+/* Vertical shading only — the hue is unchanged, so the encoding is unchanged.
+ * The flat colour is declared first as a fallback: if color-mix is unsupported
+ * the gradient declaration is dropped and the segment still paints. A cost bar
+ * that renders empty because of a decorative gradient would be a real bug. */
 .costbar-fee {
   background: var(--series-fee);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--series-fee) 86%, white), var(--series-fee));
 }
 
 .costbar-spread {
   background: var(--series-spread);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--series-spread) 86%, white), var(--series-spread));
+  animation-delay: 0.08s;
 }
 
 /* --------------------------------------------------------- results table */
@@ -307,17 +457,29 @@ body {
 }
 
 .quote {
+  position: relative;
   background: var(--surface-1);
-  padding: 1rem 1.1rem;
+  padding: 1.1rem 1.2rem;
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr) auto;
-  gap: 1rem;
+  gap: 1.1rem;
   align-items: center;
+  transition: background 0.2s var(--ease);
+}
+
+.quote:hover {
+  background: var(--surface-raised);
 }
 
 .quote.is-best {
-  background: var(--surface-1);
+  background: linear-gradient(90deg, var(--success-tint), transparent 42%),
+    var(--surface-1);
   box-shadow: inset 3px 0 0 var(--success-text);
+}
+
+.quote.is-best:hover {
+  background: linear-gradient(90deg, var(--success-tint), transparent 55%),
+    var(--surface-raised);
 }
 
 .quote-provider {
@@ -325,18 +487,19 @@ body {
 }
 
 .quote-name {
-  font-weight: 650;
-  font-size: 0.9375rem;
+  font-weight: 680;
+  font-size: 0.9688rem;
+  letter-spacing: -0.008em;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .quote-product {
   font-size: 0.8125rem;
   color: var(--text-secondary);
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
 .quote-bar {
@@ -345,10 +508,10 @@ body {
 
 .quote-breakdown {
   display: flex;
-  gap: 1rem;
+  gap: 1.1rem;
   font-size: 0.8125rem;
   color: var(--text-secondary);
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   font-variant-numeric: tabular-nums;
   flex-wrap: wrap;
 }
@@ -359,10 +522,10 @@ body {
 }
 
 .quote-total {
-  font-size: 1.125rem;
-  font-weight: 650;
+  font-size: 1.1875rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.022em;
 }
 
 .quote-sub {
@@ -373,31 +536,35 @@ body {
 
 .badge {
   display: inline-block;
-  font-size: 0.6875rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: 0.625rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
+  padding: 0.16rem 0.5rem;
   border-radius: 999px;
   border: 1px solid var(--border-strong);
   color: var(--text-secondary);
+  background: var(--surface-sunken);
+  white-space: nowrap;
 }
 
 .badge.is-best {
   color: var(--success-text);
-  border-color: var(--success-text);
+  border-color: transparent;
+  background: var(--success-tint);
 }
 
 .badge.is-trap {
   color: var(--status-critical);
-  border-color: var(--status-critical);
+  border-color: transparent;
+  background: var(--critical-tint);
 }
 
 /* --------------------------------------------------------------- advisor */
 
 .advisor-input {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.7rem;
   flex-wrap: wrap;
 }
 
@@ -405,30 +572,44 @@ body {
   flex: 1 1 320px;
   font: inherit;
   font-size: 0.9375rem;
-  padding: 0.6rem 0.7rem;
+  padding: 0.7rem 0.85rem;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--surface-1);
+  background: var(--surface-raised);
   color: var(--text-primary);
   min-width: 0;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease),
+    background 0.18s var(--ease);
+}
+
+.advisor-input input:focus {
+  outline: none;
+  background: var(--surface-1);
+  border-color: var(--series-fee);
+  box-shadow: 0 0 0 3.5px var(--accent-tint);
 }
 
 .advice {
-  margin-top: 1rem;
-  padding: 1rem 1.1rem;
+  margin-top: 1.15rem;
+  padding: 1.15rem 1.25rem;
   border: 1px solid var(--border);
   border-left: 3px solid var(--series-fee);
   border-radius: var(--radius-sm);
-  background: var(--surface-sunken);
+  background: linear-gradient(180deg, var(--accent-tint), transparent 60%),
+    var(--surface-sunken);
+  animation: rise 0.4s var(--ease) both;
 }
 
 .advice-headline {
-  font-weight: 650;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.014em;
+  margin-bottom: 0.6rem;
 }
 
 .advice p {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.55rem;
   font-size: 0.9375rem;
   color: var(--text-secondary);
 }
@@ -439,42 +620,78 @@ body {
 
 .advice-tag {
   font-size: 0.6875rem;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--gridline);
 }
 
 /* ----------------------------------------------------------------- misc */
 
 .notice {
-  padding: 0.75rem 0.9rem;
-  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.35rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
   color: var(--text-secondary);
   font-size: 0.9375rem;
   background: var(--surface-1);
+  box-shadow: var(--shadow-sm);
+  animation: rise 0.35s var(--ease) both;
 }
 
 .notice.is-error {
-  border-color: var(--status-critical);
+  border-color: transparent;
   color: var(--status-critical);
+  background: var(--critical-tint);
 }
 
 .disclaimer {
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.15rem;
   border-top: 1px solid var(--gridline);
   font-size: 0.8125rem;
   color: var(--text-muted);
   max-width: 72ch;
 }
 
+/* ------------------------------------------------------------- motion */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(9px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
+  .shell {
+    padding: 2rem 1rem 3.5rem;
+  }
+
   .quote {
     grid-template-columns: 1fr;
-    gap: 0.6rem;
+    gap: 0.7rem;
   }
 
   .quote-totals {
