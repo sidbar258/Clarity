@@ -113,6 +113,9 @@ works end to end with no API key.
 ## Running it
 
 ```bash
+git clone git@github.com:sidbar258/jachacks-fintech.git
+cd jachacks-fintech
+curl -fsSL https://raw.githubusercontent.com/jaseci-labs/jaseci/main/scripts/install.sh | bash -s -- --version 0.34.5
 jac start --dev main.jac      # app + API with hot reload
 jac test pricing_tests.jac    # 8 pricing tests
 jac check .                   # type-check everything
