@@ -1,12 +1,10 @@
 """The AI advisor panel.
 
-Takes a request in plain English, and renders the recommendation the agent wrote
-from the computed quotes. The `ai_generated` flag drives the footer note so it is
-always clear whether a model or the deterministic fallback produced the text.
+Takes a request in plain English, and renders the recommendation the agent wrote from the computed quotes. The `ai_generated` flag drives the footer note so it is always 
+clear whether a model or the deterministic fallback produced the text.
 """
 
 sv import from ..advisor { Advice }
-
 
 def:pub AdvisorPanel(
     prompt_text: str,
@@ -32,7 +30,7 @@ def:pub AdvisorPanel(
                 <input
                     type="text"
                     value={prompt_text}
-                    placeholder="I need to send $300 to my mum in Manila for rent"
+                    placeholder="I need to send $300 from US to my mum in the Philippines for rent"
                     onChange={lambda (e: ChangeEvent) { onPrompt(e.target.value); }}
                 />
                 <button className="btn" type="submit" disabled={busy}>
