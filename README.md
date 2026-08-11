@@ -128,4 +128,4 @@ term, we plan to improve the product with saved preferences, account creation, a
 `difficulty` scales how wide a spread providers charge on a corridor (1.0 = dense and competitive; thin corridors run higher). Fees are in the send currency; `*_bps` 
 columns are basis points (100 bps = 1 percent).
 
-Built for [JacHacks SF 2026](https://jachacks-sf.devpost.com/project-gallery).
+Built for [JacHacks San Francisco](https://jachacks-sf.devpost.com/project-gallery).
