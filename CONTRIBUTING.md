@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to the **Clarity** project! Contributions from the community are what make open source projects thrive.
+Thank you for your interest in contributing here! Contributions from the community are what make open source projects thrive.
 
 ## How to Contribute
 
