@@ -1,4 +1,4 @@
-# Contributing to Clarity
+# Contributing
 
 Thank you for your interest in contributing to the **Clarity** project! Contributions from the community are what make open source projects thrive.
 
