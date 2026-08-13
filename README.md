@@ -118,7 +118,7 @@ jac check .                (optional command)
 The fee/spread palette is validated for contrast and color-vision separation against both the light and dark surfaces (worst-pair ΔE 24.7 protan / 33.6 normal
 in light mode). The two cost segments always carry a legend, so identity is never color-alone, and the numeric breakdown is printed beside every bar as well.
 
-## What's next for Clarity
+## What is next
 Next, we’d integrate live provider APIs like Wise, Remitly, and Western Union to replace our synthetic dataset with real-time data. We’d also expand our rate-watching 
 feature so the agent can monitor exchange rates over a flexible time window and proactively recommend the best time to send, not just the best provider right now. Longer 
 term, we plan to improve the product with saved preferences, account creation, and theme customization to make it more personalized and easier to use over time.
