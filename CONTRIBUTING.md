@@ -24,7 +24,7 @@ We welcome contributions in many forms, including:
 
 ### Developing this
 
-Read the [README](./README.md)
+Read the [README](./README.md).
 
 ### Submitting Changes
 
