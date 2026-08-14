@@ -42,7 +42,7 @@ keywords = "remittance fees exchange rate comparison fintech jac"
 # With no model reachable the advisor falls back to deterministic summaries, so
 # the app still works end to end.
 [byllm.model]
-default_model = "anthropic/claude-opus-5"
+default_model = "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
 
 [byllm.call_params]
 temperature = 0.2
