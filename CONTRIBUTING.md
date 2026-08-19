@@ -15,7 +15,7 @@ We welcome contributions in many forms, including:
 1. **Fork the Repository:** Click the "Fork" button on the GitHub page to create your own copy of this.
 2. **Clone Your Fork:** Clone the repository to your local machine:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/jachacks-fintech.git](https://github.com/YOUR_USERNAME/jachacks-fintech.git)
+   git clone https://github.com/YOUR_USERNAME/clarity.git
    ```
 3. **Create a Branch:** Create a new branch for your feature or bug fix:
    ```bash
@@ -41,3 +41,4 @@ If you encounter a bug or have a suggestion, please open an issue on the GitHub 
 * Steps to reproduce the issue.
 * Screenshots of expected versus actual behavior.
 * Any relevant error messages or logs.
+
