@@ -112,7 +112,7 @@ Go to /docs.
 git clone git@github.com:sidbar258/clarity.git
 cd clarity
 curl -fSL https://raw.githubusercontent.com/jaseci-labs/jaseci/main/scripts/install.sh | bash -s -- --version 0.34.5
-jac test pricing_tests.jac # optional command with 8 pricing tests in pricing_tests.jac
+jac test pricing_tests.jac # optional command with 8 tests
 jac check .                # optional command to type-check everything
 jac start --dev main.jac   # starts the entire application with hot reload
 ```
