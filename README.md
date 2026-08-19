@@ -26,6 +26,10 @@ Western Union advertises a **$0 fee** and is the most expensive option shown. Th
 | React UI (form, status tiles, stacked cost bars, advisor panel) | `frontend.cl.jac`, `components/` |
 | Reference-data loader | `market_data.py` |
 | Pricing tests | `pricing_tests.jac` |
+| `currency,units_per_usd` | `currencies.csv` |
+| `code,name,currency,flag,role,region,difficulty` | `countries.csv` |
+| `slug,name,blurb,network` | `providers.csv` |
+| `provider_slug,send_country,receive_country,pay_in,pay_out,fixed_fee,pct_fee_bps,min_fee,fx_margin_bps,eta_minutes` | `offers.csv` |
 
 ## What it does
 Clarity compares remittance providers side-by-side for any amount, currency corridor, and payment method. Instead of just showing an advertised "fee," it breaks down the 
@@ -105,12 +109,12 @@ Go to /docs.
 ## Running it
 
 ```bash
-git clone git@github.com:sidbar258/jachacks-fintech.git
-cd jachacks-fintech
+git clone git@github.com:sidbar258/clarity.git
+cd clarity
 curl -fSL https://raw.githubusercontent.com/jaseci-labs/jaseci/main/scripts/install.sh | bash -s -- --version 0.34.5
-jac start main.jac
 jac test pricing_tests.jac (optional command)
 jac check .                (optional command)
+jac start main.jac
 ```
 
 ## Accessibility & design notes
