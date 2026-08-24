@@ -15,7 +15,7 @@ We welcome contributions in many forms, including:
 1. **Fork the Repository:** Click the "Fork" button on the GitHub page to create your own copy of this.
 2. **Clone Your Fork:** Clone the repository to your local machine:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/clarity.git](https://github.com/YOUR_USERNAME/clarity.git)
+   git clone https://github.com/YOUR_USERNAME/clarity.git
    ```
 3. **Create a Branch:** Create a new branch for your feature or bug fix:
    ```bash
