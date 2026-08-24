@@ -10,21 +10,21 @@ We welcome contributions in many forms, including:
 * Improving documentation.
 * Submitting code improvements via Pull Requests.
 
-### Getting Started
+## Getting Started
 
 1. **Fork the Repository:** Click the "Fork" button on the GitHub page to create your own copy of this.
 2. **Clone Your Fork:** Clone the repository to your local machine:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/clarity.git
+   git clone [https://github.com/YOUR_USERNAME/jachacks-fintech.git](https://github.com/YOUR_USERNAME/jachacks-fintech.git)
    ```
 3. **Create a Branch:** Create a new branch for your feature or bug fix:
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
-### Developing this
+## Development
 
-Read the [README](./README.md).
+Navigate to [README.md#running-it](./README.md#running-it).
 
 ### Submitting Changes
 
@@ -33,7 +33,7 @@ Read the [README](./README.md).
    ```bash
    git push origin feature/your-feature-name
    ```
-3. **Open a Pull Request:** Navigate here and click "New Pull Request" to submit your changes for review.
+3. **Open a Pull Request:** Navigate to your fork and click "Contribute", then "Open Pull Request" to submit changes for review.
 
 ## Reporting Issues
 
@@ -41,4 +41,3 @@ If you encounter a bug or have a suggestion, please open an issue on the GitHub 
 * Steps to reproduce the issue.
 * Screenshots of expected versus actual behavior.
 * Any relevant error messages or logs.
-
